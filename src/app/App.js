@@ -19,6 +19,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeV5 />} exact />
+      <Route path="/mint-1" element={<MintPageOne />} />
     {/*   <Route path="/home-two" element={<HomeV2 />} />
       <Route path="/home-three" element={<HomeV3 />} />
       <Route path="/home-four" element={<HomeV4 />} />
