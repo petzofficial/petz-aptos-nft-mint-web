@@ -1,5 +1,5 @@
 import { useModal } from "../../../../utils/ModalContext";
-import CountdownTimer from "react-component-countdown-timer";
+//import CountdownTimer from "react-component-countdown-timer";
 import Counter from "../../../../common/counter";
 import Particle from "../../../../common/particle/v1";
 import Button from "../../../../common/button";
@@ -54,7 +54,7 @@ const Banner = () => {
           <div className="bithu_v2_timer">
             <h4>TIME LEFT</h4>
             <div className="timer timer_1">
-              <CountdownTimer {...settings} />
+              {/* <CountdownTimer {...settings} /> */}
             </div>
           </div>
           <div className="bithu_v2_baner_buttons text-center">

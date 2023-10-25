@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CountdownTimer from "react-component-countdown-timer";
+//import CountdownTimer from "react-component-countdown-timer";
 import { useModal } from "../../../../utils/ModalContext";
 import { Slider, SliderItem } from "../../../../common/slider/Slider";
 import Button from "../../../../common/button";
@@ -144,7 +144,7 @@ const Mint = () => {
 
               <div className="mint_timer">
                 <h5>Public Mint End in</h5>
-                <CountdownTimer {...counterSettings} />
+               {/*  <CountdownTimer {...counterSettings} /> */}
               </div>
               <div className="content_footer">
                 <h5>Max 5 NFTs per wallet</h5>

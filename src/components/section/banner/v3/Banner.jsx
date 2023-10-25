@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useModal } from "../../../../utils/ModalContext";
 
-import CountdownTimer from "react-component-countdown-timer";
+//import CountdownTimer from "react-component-countdown-timer";
 
 import Button from "../../../../common/button";
 import Particle from "../../../../common/particle/v2";
@@ -61,7 +61,7 @@ const Banner = () => {
               <div className="bithu_v3_timer">
                 <h5 className="text-uppercase">Public Mint end in</h5>
                 <div className="timer timer_1">
-                  <CountdownTimer {...settings} />
+                 {/*  <CountdownTimer {...settings} /> */}
                 </div>
               </div>
               <div className="banner-count-inner d-flex align-items-center">

@@ -1,4 +1,4 @@
-import CountdownTimer from "react-component-countdown-timer";
+//import CountdownTimer from "react-component-countdown-timer";
 import {
   FaDiscord,
   FaTwitter,
@@ -37,7 +37,7 @@ const Upcoming = () => {
         <div className="upcoming_content">
           <h2 className="title">MINT COMING SOON</h2>
           <div className="time_count">
-            <CountdownTimer {...settings} />
+          {/*   <CountdownTimer {...settings} /> */}
 
             <div className="note">
               <h5>

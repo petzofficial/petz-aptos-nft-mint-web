@@ -1,4 +1,4 @@
-import CountdownTimer from "react-component-countdown-timer";
+//import CountdownTimer from "react-component-countdown-timer";
 import Counter from "../../../../common/counter";
 import Button from "../../../../common/button"; 
 import MintStyleWrapper from "./Mint.style";
@@ -78,7 +78,7 @@ const Mint = () => {
               <h4 className="text-uppercase counter_title">
                 Public Mint end in
               </h4>
-              <CountdownTimer {...counterSettings} />
+             {/*  <CountdownTimer {...counterSettings} /> */}
             </div>
             <div className="col-md-4 text-center">
               <div className="mint_counter">
