@@ -5,7 +5,7 @@ import { isMetaMaskInstalled, ethereum } from '../config';
 
 
 export const mint = async (mint_amount) => {
-    if(isMetaMaskInstalled()){
+    /* if(isMetaMaskInstalled()){
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const contractAddress = "0x9FD56e423c9f0C01D4d011ad30860962ddaeA51D";
@@ -15,11 +15,11 @@ export const mint = async (mint_amount) => {
             value: ethers.utils.parseEther((0.03 * mint_amount).toString())
         })
         return txnHash
-    }
+    } */
 }
 
 export const totalMintCount = async () => {
-    if(isMetaMaskInstalled()){
+    /* if(isMetaMaskInstalled()){
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const contractAddress = "0x9FD56e423c9f0C01D4d011ad30860962ddaeA51D";
@@ -28,5 +28,5 @@ export const totalMintCount = async () => {
         let totalMint = await nftContract.count();
 
         return totalMint;
-    }
+    } */
 }

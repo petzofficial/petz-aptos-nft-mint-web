@@ -63,9 +63,9 @@ const HomeV5 = () => {
       <Layout>
         <GlobalStyles />
         {visibility && <MintNowModal />}
-        {walletModalvisibility && <WalletModal />}
+      {/*   {walletModalvisibility && <WalletModal />}
         {metamaskModalVisibility && <MetamaskModal/> }
-        {connectWalletModal && <ConnectWallet/> }
+        {connectWalletModal && <ConnectWallet/> } */}
         <Header />
         <StyleWrapper>
           <Slider

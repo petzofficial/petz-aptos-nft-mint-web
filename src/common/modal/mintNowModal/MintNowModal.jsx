@@ -50,10 +50,10 @@ const MintNowModal = () => {
     }else if(count < 1){
       setMessage('Minimum minting ammount 1.');
     }else{
-      let txn = await mint(count);
+    /*   let txn = await mint(count);
       if(txn.length){
         setMessage('Minted successfully!');
-      }
+      } */
     }
   }
   
