@@ -109,6 +109,8 @@ const MintNowModal = () => {
   useEffect(() => {
     fetchList();
   }, [account?.address]);
+  const pubicPrice = `0.0000${cmResourceArr?.data?.public_sale_mint_price}`
+  console.log(pubicPrice,'pubicPrice')
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">
@@ -134,7 +136,7 @@ const MintNowModal = () => {
                   </li>
                   <li>
                     <h5>Price</h5>
-                    <h5>{cmResourceArr?.data?.public_sale_mint_price} ETH</h5>
+                    <h5>{pubicPrice} APT</h5>
                   </li>
                   <li>
                     <h5>Quantity</h5>
@@ -155,7 +157,7 @@ const MintNowModal = () => {
                       <button onClick={() => increaseCount() }>+</button>
                     </div>
                     <h5>
-                      <span>{ count * price }</span> ETH
+                      <span>{ count * pubicPrice }</span> APT
                     </h5>
                   </li>
                 </ul>

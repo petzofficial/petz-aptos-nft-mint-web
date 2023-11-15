@@ -16,6 +16,7 @@ import particle2 from "../../../../assets/images/icon/v5-star-icon.svg";
 import particle3 from "../../../../assets/images/icon/v5-coin-icon.svg";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
+import moment from 'moment';
 
 export const provider = new Provider(Network.TESTNET);
 
@@ -53,9 +54,21 @@ const fetchList = async () => {
      
     }
   };
+
+  const unixTimestamp = cmResourceArr?.data?.public_sale_mint_time; // Replace this with your Unix timestamp
+  const date = new Date(unixTimestamp * 1000); // Convert Unix timestamp to milliseconds
+
+  // Get the various components of the date
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1; // Month is 0-indexed, so we add 1
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
   useEffect(() => {
     fetchList();
   }, [account?.address]);
+  console.log(cmResourceArr,'cmResourceArr')
   return (
     <BannerV1Wrapper id="home">
       <div className="container">
@@ -82,12 +95,12 @@ const fetchList = async () => {
                 </Button>
               </div>
               <div className="coin-info">
-                <span>Max 2 NFTs per wallet . Price {cmResourceArr?.data?.public_sale_mint_price} ETH + gas</span>
+                <span>Max 2 NFTs per wallet . Price 0.0000{cmResourceArr?.data?.public_sale_mint_price} APT + gas</span>
                 <span>
                   MINT IS LIVE{" "}
-                  <span className="highlighted">UNTIL {cmResourceArr?.data?.public_sale_mint_time}</span>
+                  <span className="highlighted">UNTIL {`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>
                 </span>
-                <span>Presale : {cmResourceArr?.data?.public_sale_mint_price ? cmResourceArr?.data?.public_sale_mint_price : "SOLDOUT"}</span>
+                <span>Presale : 0.0000{cmResourceArr?.data?.presale_mint_price ? cmResourceArr?.data?.presale_mint_price : ""}</span>
               </div>
             </div>
           </div>
