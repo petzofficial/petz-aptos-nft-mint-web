@@ -151,7 +151,6 @@ const NavWrapper = styled.nav`
       font-weight: 400;
       font-size: 16px;
     }
-
     .menu_btn {
       display: none;
       border: none;

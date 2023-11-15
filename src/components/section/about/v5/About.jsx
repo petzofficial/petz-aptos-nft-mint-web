@@ -1,8 +1,13 @@
 import Counter from "../../../../common/counter";
 import SectionTitle from "../../../../common/sectionTitle";
 import data from "../../../../assets/data/about/dataV2";
-
 import AboutStyleWrapper from "./About.style";
+import { GrLinkedinOption } from "react-icons/gr";
+import { RiTwitterXLine } from "react-icons/ri";
+import { BsGithub } from "react-icons/bs";
+import { SlSocialReddit } from "react-icons/sl";
+import { LiaTelegram } from "react-icons/lia";
+import { BsFiletypeDoc } from "react-icons/bs";
 
 const About = () => {
   const { aboutDescription1, aboutDescription2 } = data;
@@ -23,7 +28,6 @@ const About = () => {
               </div>
             </div>
           </div>
-
           <div className="col-lg-6">
             <div className="about_right_item">
               <div className="counter_item">
@@ -72,6 +76,26 @@ const About = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="col-span-12 mt-4" style={{display:"flex"}}>
+          <a href="" className="socailLogo cursor-pointer">
+            <GrLinkedinOption color="white" size={"24px"}/>
+          </a>
+          <a href="" className="socailLogo px-2">
+            <SlSocialReddit color="white" size={"24px"}/>
+          </a>
+          <a  href="" className="socailLogo px-2">
+            <RiTwitterXLine color="white" size={"24px"}/>
+          </a>
+          <a  href="" className="socailLogo px-2">
+            <LiaTelegram color="white" size={"24px"}/>
+          </a>
+          <a href="" className="socailLogo px-2">
+            <BsGithub color="white" size={"24px"}/>
+          </a>
+          <a href="" className="socailLogo px-2">
+            <BsFiletypeDoc color="white" size={"24px"}/>
+          </a>
         </div>
       </div>
     </AboutStyleWrapper>
