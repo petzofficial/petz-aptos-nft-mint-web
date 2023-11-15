@@ -7,12 +7,24 @@ import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
 import { totalMintCount, mint } from '../../../utils/web3mint';
 import { useEffect } from "react";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { Network, Provider } from "aptos";
+//import MintStyleWrapper from "./Mint.style";
+
+export const provider = new Provider(Network.TESTNET);
 
 const MintNowModal = () => {
+  const moduleAddress = "0x1";
+  const nftModuleAddress = "0x3";
+
+  const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
+  const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
+  const { account, signAndSubmitTransaction } = useWallet();
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
   const [remaining, setRemaining] = useState(0);
   const { mintModalHandle } = useModal();
+  const [cmResourceArr,setCmResource] = useState("")
 
   let totalItems = 9999;
   let price = 0.03;
@@ -50,13 +62,28 @@ const MintNowModal = () => {
     }else if(count < 1){
       setMessage('Minimum minting ammount 1.');
     }else{
-    /*   let txn = await mint(count);
-      if(txn.length){
-        setMessage('Minted successfully!');
-      } */
+
     }
   }
-  
+  const handleMint = async () => {
+    if (!account) return [];
+    const payload = {
+      type: "entry_function_payload",
+      function: `${moduleAddress2}::candymachine::mint_script_many`,
+      type_arguments: [],
+      arguments: [resourceAddress,1],
+    };
+    try {
+      // sign and submit transaction to chain
+      const response = await signAndSubmitTransaction(payload);
+      // wait for transaction
+      await provider.waitForTransaction(response.hash);
+    } catch (error) {
+      console.log("error", error);
+    } finally {
+      //setTransactionInProgress(false);
+    }
+  }
 
   useEffect(() => {
     const calculateRemainingItems = async () => {
@@ -66,7 +93,22 @@ const MintNowModal = () => {
 
     calculateRemainingItems();
   },[totalItems]);
-
+  const fetchList = async () => {
+    if (!account) return [];
+    try {
+      const cmResource = await provider.getAccountResource(
+        resourceAddress,
+        `${moduleAddress2}::candymachine::CandyMachine`,
+      );
+      setCmResource(cmResource)
+     console.log(cmResource,'cmResource')
+    } catch (e) {
+     
+    }
+  };
+  useEffect(() => {
+    fetchList();
+  }, [account?.address]);
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">
@@ -87,12 +129,12 @@ const MintNowModal = () => {
                   <li>
                     <h5>Remaining</h5>
                     <h5>
-                      {remaining}/<span>9999</span>
+                      {cmResourceArr?.data?.minted}/<span>{cmResourceArr?.data?.total_supply}</span>
                     </h5>
                   </li>
                   <li>
                     <h5>Price</h5>
-                    <h5>{price} ETH</h5>
+                    <h5>{cmResourceArr?.data?.public_sale_mint_price} ETH</h5>
                   </li>
                   <li>
                     <h5>Quantity</h5>
@@ -120,7 +162,7 @@ const MintNowModal = () => {
               </div>
               { message && <p>{message}</p>}
               <div className="modal_mint_btn">
-                <Button lg variant="mint" onClick={() => mintNow() }>
+                <Button lg variant="mint" onClick={() => handleMint() }>
                   Mint Now
                 </Button>
               </div>

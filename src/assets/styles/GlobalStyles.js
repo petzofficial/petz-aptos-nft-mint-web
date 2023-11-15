@@ -28,6 +28,10 @@ img {
     max-width: 100%;
     height: auto;
 }
+.socailLogo {
+    img {
+    width: 24px;
+}
 
 p {
     margin: 0px;

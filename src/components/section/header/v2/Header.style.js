@@ -31,7 +31,13 @@ const HeaderStyleWrapper = styled.div`
   .bithu_menu_btns {
     display: flex;
     column-gap: 30px;
-
+    .walletIcon {
+      position: relative;
+      color: white;
+      right: -39%;
+      margin-top: 3%;
+      font-size: 21px;
+    }
     .menu_btn {
       height: 50px;
       width: 50px;

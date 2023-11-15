@@ -151,7 +151,9 @@ const NavWrapper = styled.nav`
       font-weight: 400;
       font-size: 16px;
     }
-
+    .walletIcon {
+      color:red !important
+    }
     .menu_btn {
       display: none;
       border: none;

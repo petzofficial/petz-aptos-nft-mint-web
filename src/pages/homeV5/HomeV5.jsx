@@ -16,8 +16,25 @@ import WalletModal from "../../common/modal/walletModal/WalletModal";
 import MetamaskModal from "../../common/modal/metamaskModal/MetamaskModal";
 import ConnectWallet from "../../common/modal/metamask/ConnectWallet";
 import StyleWrapper from "./StyleWrapper";
+import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
+import { PetraWallet } from "petra-plugin-wallet-adapter";
+import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { Network, Provider } from "aptos";
+//import MintStyleWrapper from "./Mint.style";
+
+const provider = new Provider(Network.TESTNET);
+const wallets = [new PetraWallet()];
 
 const HomeV5 = () => {
+  const moduleAddress = "0x1";
+  const nftModuleAddress = "0x3";
+  const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
+  const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
+  
+  const { account, signAndSubmitTransaction } = useWallet();
+
+  const [cmResourceArr,setCmResource] = useState("")
   const [isCollapse, setCollapse] = useState(true);
   const { visibility,
     walletModalvisibility, 
@@ -48,18 +65,33 @@ const HomeV5 = () => {
   const handleCollapse = () => {
     setCollapse(!isCollapse);
   };
-
-  useEffect(() => {
-    const listItems = document.querySelectorAll(".slick-dots li");
-    for (let i = 0; i <= listItems.length - 1; i++) {
-      listItems[i].addEventListener("click", (e) => { 
-        setCollapse(!isCollapse);
-      });
+  // useEffect(() => {
+  //   const listItems = document.querySelectorAll(".slick-dots li");
+  //   for (let i = 0; i <= listItems.length - 1; i++) {
+  //     listItems[i].addEventListener("click", (e) => { 
+  //       setCollapse(!isCollapse);
+  //     });
+  //   }
+  // }, [isCollapse]);
+  const fetchList = async () => {
+    if (!account) return [];
+    try {
+      const cmResource = await provider.getAccountResource(
+        resourceAddress,
+        `${moduleAddress2}::candymachine::CandyMachine`,
+      );
+      setCmResource(cmResource)
+     console.log(cmResource,'cmResource')
+    } catch (e) {
+     
     }
-  }, [isCollapse]);
-
+  };
+  useEffect(() => {
+    fetchList();
+  }, [account?.address]);
   return (
     <>
+    <AptosWalletAdapterProvider plugins={wallets} autoConnect={true}>
       <Layout>
         <GlobalStyles />
         {visibility && <MintNowModal />}
@@ -73,7 +105,7 @@ const HomeV5 = () => {
             className={`${isCollapse ? "slider_collapse" : ""}`}
           >
             <SliderItem>
-              <Banner />
+              <Banner cmResourceArr={cmResourceArr} />
             </SliderItem>
             <SliderItem>
               <About />
@@ -88,7 +120,7 @@ const HomeV5 = () => {
               <FAQ />
             </SliderItem>
             <SliderItem>
-              <Mint />
+              <Mint cmResourceArr={cmResourceArr}/>
             </SliderItem>
           </Slider>
 
@@ -99,6 +131,7 @@ const HomeV5 = () => {
           </div>
         </StyleWrapper>
       </Layout>
+      </AptosWalletAdapterProvider>
     </>
   );
 };

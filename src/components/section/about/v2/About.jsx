@@ -55,11 +55,11 @@ const About = () => {
             </span>
           </div>
         </div>
-
         {/* about card */}
         <AboutInfoCardList />
       </div>
     </AboutStyleWrapper>
+    
   );
 };
 

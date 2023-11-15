@@ -1,7 +1,7 @@
 import { SliderWrapper, SliderItemWrapper } from './Slider.style';
+import React, { memo } from 'react'
 
-
-const Slider = ({children, className, ...props}) => {
+const Slider = memo(({children, className, ...props}) => {
 
     const AllClasses = ['slick__slider']
     if(className){
@@ -13,9 +13,10 @@ const Slider = ({children, className, ...props}) => {
             {children}
         </SliderWrapper>
     )
-}
+})
 
-const SliderItem = ({children, className}) => {
+const SliderItem = memo(({children, className}) => {
+    console.log(children,'children2')
     const AllClasses = ['slick__slider__item']
     if(className){
         AllClasses.push(className)
@@ -26,6 +27,6 @@ const SliderItem = ({children, className}) => {
             {children}
         </SliderItemWrapper>
     )
-}
+})
 
-export {Slider, SliderItem};
+export  {Slider, SliderItem};

@@ -17,7 +17,7 @@ const Banner = () => {
   useEffect(() =>{
     const calculateRemainingItems = async () => {
       let totaltMintedItems = await totalMintCount();
-      //console.log(totaltMintedItems);
+      console.log(totaltMintedItems);
       setRemaining(totaltMintedItems);
     }
 

@@ -6,9 +6,11 @@ import Button from "../../../../common/button";
 import HeaderStyleWrapper from "./Header.style";
 import { isMetaMaskInstalled } from '../../../../config';
 import Dropdown from 'react-bootstrap/Dropdown';
-
 import logo from "../../../../assets/images/mint-logo.png";
 import menuIcon from "../../../../assets/images/icon/mint-menu_icon.svg";
+import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
+import buttonHoverShapeWhite from "../../../../assets/images/icon/hov_shape_s.svg";
 
 const Header = () => {
   const { 
@@ -18,7 +20,7 @@ const Header = () => {
     isWalletAlreadyConnected, 
     disconnectWalletFromApp } = useModal();
   const [isMobileMenu, setMobileMenu] = useState(false);
-
+  const { connected } = useWallet();
   const handleMobileMenu = () => {
     setMobileMenu(!isMobileMenu);
   };
@@ -53,7 +55,18 @@ const Header = () => {
   useEffect(() => {
     isWalletAlreadyConnected();
   },[isWalletAlreadyConnected]);
-
+const test = ()=>{
+  return (
+    <div>
+    <img
+    src={buttonHoverShapeWhite}
+    className="hover-shape shape-right shape-white"
+    alt="bithu nft button hover shape"
+  />
+  {connected ? "name" : "n"}
+  </div>
+  )
+}
   return (
     <>
       <HeaderStyleWrapper id="navbar">
@@ -76,16 +89,27 @@ const Header = () => {
                 </Dropdown.Menu>
               </Dropdown>
               :
-              <Button
+              <>
+              {!connected &&
+                <div className="walletIcon" >
+                  <FaWallet />
+                </div>
+              }
+              <WalletSelector className="connect_btn">
+                {test}
+                 </WalletSelector>
+              {/* <Button
                 sm
                 variant="hovered"
                 className="connect_btn"
                 onClick={() => handleWalletConnect()}
               >
+                
                 <FaWallet />
+               
                 Connect
-              </Button>
-
+              </Button> */}
+              </>
               }
             {/*   <Button
                 variant="outline"
