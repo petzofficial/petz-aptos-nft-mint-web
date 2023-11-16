@@ -121,22 +121,22 @@ const About = () => {
           </div>
         </div>
         <div className="col-span-12 mt-4" style={{display:"flex"}}>
-          <a href="" className="socailLogo cursor-pointer">
+          <a href="https://www.linkedin.com/company/petz-money" className="socailLogo cursor-pointer">
             <GrLinkedinOption color="white" size={"24px"}/>
           </a>
           <a href="" className="socailLogo px-2">
             <SlSocialReddit color="white" size={"24px"}/>
           </a>
-          <a  href="" className="socailLogo px-2">
+          <a  href="https://twitter.com/PetzOfficial" className="socailLogo px-2">
             <RiTwitterXLine color="white" size={"24px"}/>
           </a>
-          <a  href="" className="socailLogo px-2">
+          <a  href="https://t.me/petz_money" className="socailLogo px-2">
             <LiaTelegram color="white" size={"24px"}/>
           </a>
-          <a href="" className="socailLogo px-2">
+          <a href="https://github.com/petzofficial" className="socailLogo px-2">
             <BsGithub color="white" size={"24px"}/>
           </a>
-          <a href="" className="socailLogo px-2">
+          <a href="https://docs.petz.money/" className="socailLogo px-2">
             <BsFiletypeDoc color="white" size={"24px"}/>
           </a>
         </div>
