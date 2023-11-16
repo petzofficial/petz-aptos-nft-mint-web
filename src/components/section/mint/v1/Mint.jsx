@@ -46,7 +46,7 @@ const Mint = () => {
       type: "entry_function_payload",
       function: `${moduleAddress2}::candymachine::mint_script_many`,
       type_arguments: [],
-      arguments: [resourceAddress,1],
+      arguments: [resourceAddress,count],
     };
     try {
       // sign and submit transaction to chain
