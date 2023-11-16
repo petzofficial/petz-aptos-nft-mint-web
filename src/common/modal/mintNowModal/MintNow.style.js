@@ -108,7 +108,12 @@ const MintModalStyleWrapper = styled.div`
       }
     }
   }
-
+  .mint_img{
+    img{
+      height: 200px;
+    }
+  }
+  
   .mint_count_list {
     margin: 30px 0px;
     ul {
