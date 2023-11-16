@@ -9,7 +9,7 @@ import { totalMintCount, mint } from '../../../utils/web3mint';
 import { useEffect } from "react";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
-//import MintStyleWrapper from "./Mint.style";
+import nftLogo from "../../../assets/images/nft/example-unscreen.gif";
 
 export const provider = new Provider(Network.TESTNET);
 
@@ -124,7 +124,7 @@ const MintNowModal = () => {
             </div>
             <div className="modal_body text-center">
               <div className="mint_img">
-                <img src={mintImg} alt="bithu nft mint" />
+                <img src={nftLogo} alt="bithu nft mint" />
               </div>
               <div className="mint_count_list">
                 <ul>
