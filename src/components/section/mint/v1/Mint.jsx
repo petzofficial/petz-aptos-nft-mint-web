@@ -102,7 +102,8 @@ const Mint = () => {
   useEffect(() => {
     fetchList();
   }, [account?.address]);
-  const pubicPrice = `0.0000${cmResourceArr?.data?.public_sale_mint_price}`
+  //const pubicPrice = cmResourceArr?.data?.public_sale_mint_price / 100000000
+  const pubicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
   return (
     <MintStyleWrapper>
       <div className="container">
@@ -131,7 +132,7 @@ const Mint = () => {
                 </li>
                 <li>
                   <h5>Price</h5>
-                  <h5>0.0000{cmResourceArr?.data?.public_sale_mint_price} APT</h5>
+                  <h5>{pubicPrice} APT</h5>
                 </li>
                 <li>
                   <h5>Quantity</h5>

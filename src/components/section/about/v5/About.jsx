@@ -25,31 +25,6 @@ const About = () => {
   const fetchList = async () => {
     if (!account) return [];
     try {
-      const transactionResource = await provider.getAccountTransactions(
-        account?.address
-      );
-
-      const coinResource = await provider.getAccountResource(
-        account?.address,
-        `${moduleAddress}::coin::CoinStore<${moduleAddress}::aptos_coin::AptosCoin>`,
-      );
-
-      const cmResource2 = await provider.getAccountResource(
-        account?.address,
-        `${moduleAddress2}::candymachine::MintData`,
-      );
-
-      const nftResource = await provider.getOwnedTokens(
-        account?.address
-      );
-
-      const faResource = await provider.getAccountCoinsData(
-        account?.address
-      );
-
-      const resource = await provider.getAccountResources(
-        account?.address
-      );
       const cmResource = await provider.getAccountResource(
         resourceAddress,
         `${moduleAddress2}::candymachine::CandyMachine`,
@@ -64,6 +39,7 @@ const About = () => {
     fetchList();
   }, [account?.address]);
   console.log(account,'cmResourceArrabout')
+  const pubicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
   return (
     <AboutStyleWrapper>
       <div className="container">
@@ -91,7 +67,7 @@ const About = () => {
               </div>
               <div className="counter_item">
                 <h3>
-                  0.0000{cmResourceArr?.data?.public_sale_mint_price}
+                  {pubicPrice}
                 </h3>
                 <h6>NFT Mint Price</h6>
               </div>

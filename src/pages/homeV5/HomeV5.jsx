@@ -108,7 +108,7 @@ const HomeV5 = () => {
               <Banner cmResourceArr={cmResourceArr} />
             </SliderItem>
             <SliderItem>
-              <About />
+              <About cmResourceArr={cmResourceArr}/>
             </SliderItem>
            {/*  <SliderItem>
               <RoadMap />

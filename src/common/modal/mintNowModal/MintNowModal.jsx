@@ -110,8 +110,7 @@ const MintNowModal = () => {
   useEffect(() => {
     fetchList();
   }, [account?.address]);
-  const pubicPrice = `0.0000${cmResourceArr?.data?.public_sale_mint_price}`
-  console.log(pubicPrice,'pubicPrice')
+  const pubicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">
