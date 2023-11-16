@@ -14,9 +14,9 @@ import thumb3 from "../../../../assets/images/nft/emoji-img3.png";
 import particle1 from "../../../../assets/images/icon/v5-thunder-icon.svg";
 import particle2 from "../../../../assets/images/icon/v5-star-icon.svg";
 import particle3 from "../../../../assets/images/icon/v5-coin-icon.svg";
+import nftLogo from "../../../../assets/images/nft/example-unscreen.gif";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
-import moment from 'moment';
 
 export const provider = new Provider(Network.TESTNET);
 
@@ -110,7 +110,7 @@ const fetchList = async () => {
                 {slideImages?.map((thumb, idx) => (
                   <SliderItem key={idx}>
                     <div className="banner_nft_thumb">
-                      <img src={thumb} alt="thumb" />
+                      <img src={nftLogo} alt="thumb" />
                     </div>
                   </SliderItem>
                 ))}

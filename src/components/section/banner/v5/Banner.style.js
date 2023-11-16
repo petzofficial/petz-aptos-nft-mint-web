@@ -188,7 +188,9 @@ const Bannerv5Wrapper = styled.section`
       margin: 0 auto;
     }
   }
-
+    .banner_nft_thumb {
+      max-width: 370px;
+    }
   @media only screen and (max-width: 991px) {
     padding: 120px 0 80px 0;
 

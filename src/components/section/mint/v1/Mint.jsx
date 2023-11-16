@@ -6,6 +6,7 @@ import Button from "../../../../common/button";
 import thumb1 from "../../../../assets/images/nft/emoji-img4.png";
 import thumb2 from "../../../../assets/images/nft/emoji-img5.png";
 import thumb3 from "../../../../assets/images/nft/emoji-img6.png";
+import nftLogo from "../../../../assets/images/nft/example-unscreen.gif";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
 import MintStyleWrapper from "./Mint.style";
@@ -101,6 +102,7 @@ const Mint = () => {
   useEffect(() => {
     fetchList();
   }, [account?.address]);
+  const pubicPrice = `0.0000${cmResourceArr?.data?.public_sale_mint_price}`
   return (
     <MintStyleWrapper>
       <div className="container">
@@ -111,7 +113,7 @@ const Mint = () => {
                 {slideImages?.map((thumb, idx) => (
                   <SliderItem key={idx}>
                     <div className="mint_thumb">
-                      <img src={thumb} alt="thumb" />
+                      <img src={nftLogo} alt="thumb" />
                     </div>
                   </SliderItem>
                 ))}
@@ -129,7 +131,7 @@ const Mint = () => {
                 </li>
                 <li>
                   <h5>Price</h5>
-                  <h5>{cmResourceArr?.data?.public_sale_mint_price} ETH</h5>
+                  <h5>0.0000{cmResourceArr?.data?.public_sale_mint_price} APT</h5>
                 </li>
                 <li>
                   <h5>Quantity</h5>
@@ -154,7 +156,7 @@ const Mint = () => {
                     </button>
                   </div>
                   <h5>
-                    <span>0.30</span> ETH
+                    <span>{count * pubicPrice}</span> APT
                   </h5>
                 </li>
               </ul>
