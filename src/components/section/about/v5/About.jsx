@@ -61,7 +61,7 @@ const About = () => {
             <div className="about_right_item">
               <div className="counter_item">
                 <h3>
-                  {cmResourceArr?.data?.minted}
+                  {cmResourceArr?.data?.total_supply}
                 </h3>
                 <h6>Total Items</h6>
               </div>
@@ -73,25 +73,25 @@ const About = () => {
               </div>
               <div className="counter_item">
                 <h3>
-                  <Counter
+                 {/*  <Counter
                     end={555}
                     decimal="."
                     decimals={555 % 1 !== 0 ? "2" : "0"}
                     suffix={"+"}
-                  />
+                  /> */}5
                 </h3>
                 <h6>Number of Attributes</h6>
               </div>
               <div className="counter_item">
                 <h3>
-                  <Counter
+                  {/* <Counter
                     end={25.5}
                     decimal="."
                     decimals={25.5 % 1 !== 0 ? "2" : "0"}
                     suffix={"K"}
-                  />
+                  /> */}0
                 </h3>
-                <h6>Volume Traded (ETH)</h6>
+                <h6>Volume Traded (APT)</h6>
               </div>
             </div>
           </div>

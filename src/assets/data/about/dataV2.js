@@ -4,9 +4,9 @@ import aboutIcon from "../../images/icon/ab-icon-image.png";
 
 const data = {
   aboutDescription1:
-    "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur cites of the word in classical literature.",
+    "PetZ Money is a virtual pet platform that uses blockchain technology, gamefi elements, and the Pomodoro technique to incentivize users to be more productive. Users start a Pomodoro session and focus on a single task for 25 minutes. If they are successful, they earn in-game currency that can be used to purchase food, toys, and other items for their pet. After four Pomodoro sessions, users are rewarded with a longer break and more in-game currency.",
   aboutDescription2:
-    'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original a latin professor at Hampden-Sydney',
+    'PetZ Money makes the Pomodoro technique more fun and engaging, helping users to stay motivated and on track.',
   artists: [
     {
       thumb: aboutThumb1,
