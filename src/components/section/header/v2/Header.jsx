@@ -96,7 +96,7 @@ const test = ()=>{
                 </div>
               }
               <WalletSelector className="connect_btn">
-                {test}
+               
                  </WalletSelector>
               {/* <Button
                 sm

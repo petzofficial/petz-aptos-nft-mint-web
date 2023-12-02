@@ -94,9 +94,9 @@ const Banner = () => {
                   {" "}
                   Mint now
                 </Button>
-                <Button sm variant="outline">
+               {/*  <Button sm variant="outline">
                   Wishlist now
-                </Button>
+                </Button> */}
               </div>
               <div className="coin-info">
                 <span>Max 2 NFTs per wallet . Price {pubicPrice} APT + gas</span>
