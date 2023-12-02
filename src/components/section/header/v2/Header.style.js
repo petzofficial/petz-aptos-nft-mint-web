@@ -34,7 +34,7 @@ const HeaderStyleWrapper = styled.div`
     .walletIcon {
       position: relative;
       color: white;
-      right: -39%;
+      right: -15%;
       margin-top: 3%;
       font-size: 21px;
     }
@@ -51,7 +51,7 @@ const HeaderStyleWrapper = styled.div`
       }
     }
 
-    .connect_btn {
+    .wallet-button {
       height: 50px;
       min-width: 150px;
       border: none;
@@ -77,7 +77,7 @@ const HeaderStyleWrapper = styled.div`
         width: 45px;
       }
 
-      .connect_btn {
+      .wallet-button {
         width: 140px;
         height: 45px;
         font-size: 14px;

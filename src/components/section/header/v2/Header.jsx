@@ -95,7 +95,7 @@ const test = ()=>{
                   <FaWallet />
                 </div>
               }
-              <WalletSelector className="connect_btn">
+              <WalletSelector className="wallet-button" >
                
                  </WalletSelector>
               {/* <Button
