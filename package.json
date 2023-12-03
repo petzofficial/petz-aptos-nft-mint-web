@@ -8,6 +8,7 @@
     "@aptos-labs/wallet-adapter-react": "^1.3.2",
     "@blocto/aptos-wallet-adapter-plugin": "^0.2.5",
     "@martianwallet/aptos-wallet-adapter": "^0.0.4",
+    "@pontem/aptos-wallet-adapter": "^0.9.1",
     "@pontem/wallet-adapter-plugin": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",

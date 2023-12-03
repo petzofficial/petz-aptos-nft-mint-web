@@ -7,14 +7,17 @@ import Layout from "../../common/layout";
 import Header from "../../components/section/header/v2";
 import Banner from "../../components/section/banner/v5";
 import About from "../../components/section/about/v5";
-import RoadMap from "../../components/section/roadMap/v5";
+//import RoadMap from "../../components/section/roadMap/v5";
 import FAQ from "../../components/section/faq/v5";
-import Team from "../../components/section/team/v5";
+//import Team from "../../components/section/team/v5";
 import Mint from "../../components/section/mint/v1";
 import MintNowModal from "../../common/modal/mintNowModal";
-import WalletModal from "../../common/modal/walletModal/WalletModal";
-import MetamaskModal from "../../common/modal/metamaskModal/MetamaskModal";
-import ConnectWallet from "../../common/modal/metamask/ConnectWallet";
+import { MartianWallet } from "@martianwallet/aptos-wallet-adapter";
+import { PontemWallet } from "@pontem/wallet-adapter-plugin";
+import { TrustWallet } from "@trustwallet/aptos-wallet-adapter";
+//import WalletModal from "../../common/modal/walletModal/WalletModal";
+//import MetamaskModal from "../../common/modal/metamaskModal/MetamaskModal";
+//import ConnectWallet from "../../common/modal/metamask/ConnectWallet";
 import StyleWrapper from "./StyleWrapper";
 import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 import { PetraWallet } from "petra-plugin-wallet-adapter";
@@ -24,7 +27,13 @@ import { Network, Provider } from "aptos";
 //import MintStyleWrapper from "./Mint.style";
 
 const provider = new Provider(Network.TESTNET);
-const wallets = [new PetraWallet()];
+const wallets = [
+  new MartianWallet(),
+  new PetraWallet(),
+  new PontemWallet(),
+  new TrustWallet(),
+];
+
 
 const HomeV5 = () => {
   const moduleAddress = "0x1";
