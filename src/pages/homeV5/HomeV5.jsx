@@ -7,17 +7,12 @@ import Layout from "../../common/layout";
 import Header from "../../components/section/header/v2";
 import Banner from "../../components/section/banner/v5";
 import About from "../../components/section/about/v5";
-//import RoadMap from "../../components/section/roadMap/v5";
 import FAQ from "../../components/section/faq/v5";
-//import Team from "../../components/section/team/v5";
 import Mint from "../../components/section/mint/v1";
 import MintNowModal from "../../common/modal/mintNowModal";
 import { MartianWallet } from "@martianwallet/aptos-wallet-adapter";
 import { PontemWallet } from "@pontem/wallet-adapter-plugin";
 import { TrustWallet } from "@trustwallet/aptos-wallet-adapter";
-//import WalletModal from "../../common/modal/walletModal/WalletModal";
-//import MetamaskModal from "../../common/modal/metamaskModal/MetamaskModal";
-//import ConnectWallet from "../../common/modal/metamask/ConnectWallet";
 import StyleWrapper from "./StyleWrapper";
 import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 import { PetraWallet } from "petra-plugin-wallet-adapter";
@@ -36,8 +31,6 @@ const wallets = [
 
 
 const HomeV5 = () => {
-  const moduleAddress = "0x1";
-  const nftModuleAddress = "0x3";
   const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
   const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
   

@@ -15,7 +15,7 @@ import { Network, Provider } from "aptos";
 const provider = new Provider(Network.TESTNET);
 
 const About = () => {
-  const moduleAddress = "0x1";
+
   const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
   const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
   const { account, signAndSubmitTransaction } = useWallet();
@@ -100,9 +100,9 @@ const About = () => {
           <a href="https://www.linkedin.com/company/petz-money" target="_blank" className="socailLogo cursor-pointer">
             <GrLinkedinOption color="white" size={"24px"}/>
           </a>
-          <a href="" className="socailLogo px-2">
+          {/* <a href="" className="socailLogo px-2">
             <SlSocialReddit color="white" size={"24px"}/>
-          </a>
+          </a> */}
           <a  href="https://twitter.com/PetzOfficial" target="_blank" className="socailLogo px-2">
             <RiTwitterXLine color="white" size={"24px"}/>
           </a> 
