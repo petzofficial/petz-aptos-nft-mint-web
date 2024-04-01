@@ -11,7 +11,7 @@ import {
   CloseIcon,
 } from "../../../../common/accordion/Accordion";
 import faqBgThumb from "../../../../assets/images/bg/faq_bg_wattermark.png";
-import faqBearShape from "../../../../assets/images/nft/faq_bear.png";
+//import faqBearShape from "../../../../assets/images/nft/faq_bear.png";
 import data from "../../../../assets/data/faq";
 import FAQStyleWrapper from "./Faq.style";
 
@@ -29,7 +29,7 @@ const FAQ = () => {
 
           <div className="bithu_faq_questions">
             <div className="faq_bear_img">
-              <img src={faqBearShape} alt="bithu nft faq" />
+              {/* <img src={faqBearShape} alt="bithu nft faq" /> */}
             </div>
             <Accordion className="faq_questions">
               {data?.map((item, i) => (

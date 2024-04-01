@@ -14,7 +14,7 @@ import thumb3 from "../../../../assets/images/nft/emoji-img3.png";
 import particle1 from "../../../../assets/images/icon/v5-thunder-icon.svg";
 import particle2 from "../../../../assets/images/icon/v5-star-icon.svg";
 import particle3 from "../../../../assets/images/icon/v5-coin-icon.svg";
-import nftLogo from "../../../../assets/images/nft/example-unscreen.gif";
+import nftLogo from "../../../../assets/images/nft/example.png";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
 export const provider = new Provider(Network.TESTNET);
@@ -104,7 +104,7 @@ const Banner = () => {
                   MINT IS LIVE{" "}
                   <span className="highlighted">UNTIL {`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>
                 </span>
-                <span>Presale : {cmResourceArr?.data?.presale_mint_price ? prePrice : ""}</span>
+                <span>Presale : {cmResourceArr?.data?.presale_mint_price ? prePrice : ""} APT</span>
               </div>
             </div>
           </div>

@@ -3,8 +3,8 @@ import SectionTitle from "../../../../common/sectionTitle";
 import AboutInfoCardList from "../aboutInfoCardList";
 
 import data from "../../../../assets/data/about/aboutv1";
-import aboutThumb1 from "../../../../assets/images/nft/about_us_img1.png";
-import aboutThumb2 from "../../../../assets/images/nft/about_us_img2.png";
+//import aboutThumb1 from "../../../../assets/images/nft/about_us_img1.png";
+//import aboutThumb2 from "../../../../assets/images/nft/about_us_img2.png";
 import AboutStyleWrapper from "./About.style";
 
 const About = () => {
@@ -26,7 +26,7 @@ const About = () => {
             <div className="v1_about_us_left_sect sm-mt-60">
               <div className="v1_about_us_img_card v1_about_us_img_card1">
                 <div className="v1_about_us_img v1_about_us_img1">
-                  <img src={aboutThumb1} alt="img" />
+                 {/*  <img src={aboutThumb1} alt="img" /> */}
                 </div>
                 <div className="v1_about_us_img1_shapes">
                   <div className="v1_about_us_img1_shapes_left">
@@ -40,7 +40,7 @@ const About = () => {
               </div>
               <div className="v1_about_us_img_card v1_about_us_img_card2">
                 <div className="v1_about_us_img v1_about_us_img2">
-                  <img src={aboutThumb2} alt="img" />
+                 {/*  <img src={aboutThumb2} alt="img" /> */}
                 </div>
                 <div className="v1_about_us_img2_shapes">
                   <div className="v1_about_us_img2_shapes_left">

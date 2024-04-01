@@ -1,10 +1,10 @@
 import Button from "../../../../common/button";
 import AboutStyleWrapper from "./About.style";
 
-import thumb1 from "../../../../assets/images/nft/story-img1.png";
-import thumb2 from "../../../../assets/images/nft/story-img2.png";
-import thumb3 from "../../../../assets/images/nft/story-img3.png";
-import thumb4 from "../../../../assets/images/nft/story-img4.png";
+//import thumb1 from "../../../../assets/images/nft/story-img1.png";
+//import thumb2 from "../../../../assets/images/nft/story-img2.png";
+//import thumb3 from "../../../../assets/images/nft/story-img3.png";
+//import thumb4 from "../../../../assets/images/nft/story-img4.png";
 
 const About = () => {
   return (
@@ -39,16 +39,16 @@ const About = () => {
           <div className="col-md-6">
             <div className="about_right_content">
               <div className="nft_thumb">
-                <img src={thumb1} alt="thumb" />
+                {/* <img src={thumb1} alt="thumb" /> */}
               </div>
               <div className="nft_thumb">
-                <img src={thumb2} alt="thumb" />
+               {/*  <img src={thumb2} alt="thumb" /> */}
               </div>
               <div className="nft_thumb">
-                <img src={thumb3} alt="thumb" />
+               {/*  <img src={thumb3} alt="thumb" /> */}
               </div>
               <div className="nft_thumb">
-                <img src={thumb4} alt="thumb" />
+                {/* <img src={thumb4} alt="thumb" /> */}
               </div>
             </div>
           </div>

@@ -1,8 +1,8 @@
 import SectionTitle from "../../../../common/sectionTitle";
 import Counter from "../../../../common/counter";
 
-import aboutImageLeft from "../../../../assets/images/nft/about_image_left.png";
-import aboutImageRight from "../../../../assets/images/nft/about_image_right.png";
+//import aboutImageLeft from "../../../../assets/images/nft/about_image_left.png";
+//import aboutImageRight from "../../../../assets/images/nft/about_image_right.png";
 import AboutInfoCardList from "../aboutInfoCardList";
 import AboutStyleWrapper from "./About.style";
 
@@ -46,12 +46,12 @@ const About = () => {
           </div>
           <div className="v2_about_img v2_about_img_left">
             <span>
-              <img src={aboutImageLeft} alt="bithu nft about" />
+             {/*  <img src={aboutImageLeft} alt="bithu nft about" /> */}
             </span>
           </div>
           <div className="v2_about_img v2_about_img_right">
             <span>
-              <img src={aboutImageRight} alt="bithu nft thumb" />
+             {/*  <img src={aboutImageRight} alt="bithu nft thumb" /> */}
             </span>
           </div>
         </div>

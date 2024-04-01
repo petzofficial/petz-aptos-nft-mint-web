@@ -6,7 +6,7 @@ import Button from "../../../../common/button";
 import thumb1 from "../../../../assets/images/nft/emoji-img4.png";
 import thumb2 from "../../../../assets/images/nft/emoji-img5.png";
 import thumb3 from "../../../../assets/images/nft/emoji-img6.png";
-import nftLogo from "../../../../assets/images/nft/example-unscreen.gif";
+import nftLogo from "../../../../assets/images/nft/example.png";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
 import MintStyleWrapper from "./Mint.style";

@@ -4,7 +4,7 @@ import { footerLinksV1 } from "../../../../assets/data/insiteLinks";
 import footerLogo from "../../../../assets/images/logo.png";
 import backToTopIcon from "../../../../assets/images/icon/back_to_top.svg";
 
-import characterShape from "../../../../assets/images/nft/3_chr_img.png";
+//import characterShape from "../../../../assets/images/nft/3_chr_img.png";
 import footerShapesLeft from "../../../../assets/images/icon/footer_shapes_left.png";
 import footerShapesRight from "../../../../assets/images/icon/footer_shapes_right.png";
 
@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="bithu_v1_main_footer">
         <div className="bithu_v1_main_footer_overlay"></div>
         <div className="three_charectre_img">
-          <img src={characterShape} alt="bithu nft character" />
+          {/* <img src={characterShape} alt="bithu nft character" /> */}
         </div>
 
         <div className="footer_bottom">

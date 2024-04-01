@@ -1,6 +1,6 @@
 import SectionTitle from "../../../../common/sectionTitle";
 import TeamMember from "../teamMember";
-import teamBearImg from "../../../../assets/images/nft/team_bear_img.png";
+//import teamBearImg from "../../../../assets/images/nft/team_bear_img.png";
 import data from "../../../../assets/data/team/teamMembersV2";
 import TeamStyleWrapper from "./Team.style";
 
@@ -9,7 +9,7 @@ const Team = () => {
     <TeamStyleWrapper>
       <div className="bithu_team_sect" id="team">
         <div className="team_bear_img">
-          <img src={teamBearImg} alt="bithu nft team" />
+          {/* <img src={teamBearImg} alt="bithu nft team" /> */}
         </div>
         <div className="container">
           <SectionTitle

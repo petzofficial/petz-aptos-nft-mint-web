@@ -3,7 +3,7 @@ import Counter from "../../../../common/counter";
 import Button from "../../../../common/button";
 import BannerV1Wrapper from "./Banner.style";
 
-import characterThumb from "../../../../assets/images/nft/Character1.png";
+//import characterThumb from "../../../../assets/images/nft/Character1.png";
 import mintLiveDownArrow from "../../../../assets/images/nft/mint_live_down_arrow.svg";
 import mintLiveText from "../../../../assets/images/nft/mint_live_text.png";
 import homeImageBG from "../../../../assets/images/nft/home_img_bg.png";
@@ -80,7 +80,7 @@ const Banner = () => {
                   <img src={homeImageBG} alt="" />
                 </div>
                 <div className="bithu_v1_baner_right_img">
-                  <img src={characterThumb} alt="avater" />
+                {/*   <img src={characterThumb} alt="avater" /> */}
                 </div>
               </div>
             </div>

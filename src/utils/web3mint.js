@@ -1,4 +1,4 @@
-import contract from '../contracts/bithuabi.json';
+//import contract from '../contracts/bithuabi.json';
 import { ethers } from 'ethers';
 import { isMetaMaskInstalled, ethereum } from '../config';
 

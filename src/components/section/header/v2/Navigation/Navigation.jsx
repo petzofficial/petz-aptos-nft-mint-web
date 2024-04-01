@@ -5,11 +5,11 @@ import {
   FaFacebook,
 } from "react-icons/fa";
 
-import home1 from "../../../../../assets/images/nft/index1.png";
-import home2 from "../../../../../assets/images/nft/index2.png";
-import home3 from "../../../../../assets/images/nft/index3.png";
-import home4 from "../../../../../assets/images/nft/index4.png";
-import home5 from "../../../../../assets/images/nft/index-5.png";
+//import home1 from "../../../../../assets/images/nft/index1.png";
+//import home2 from "../../../../../assets/images/nft/index2.png";
+//import home3 from "../../../../../assets/images/nft/index3.png";
+//import home4 from "../../../../../assets/images/nft/index4.png";
+//import home5 from "../../../../../assets/images/nft/index-5.png";
 
 import logo from "../../../../../assets/images/mint-logo.png";
 import openseaIcon from "../../../../../assets/images/icon/opensea.svg";
@@ -44,23 +44,23 @@ const Navigation = ({ mobileMenuHandle }) => {
                 <div className="home_pages">
                   <a href="/">
                     {" "}
-                    <img src={home1} alt="icon" />{" "}
+                    {/* <img src={home1} alt="icon" />{" "} */}
                   </a>
                   <a href="/home-two">
                     {" "}
-                    <img src={home2} alt="icon" />{" "}
+                  {/*   <img src={home2} alt="icon" />{" "} */}
                   </a>
                   <a href="/home-three">
                     {" "}
-                    <img src={home3} alt="icon" />{" "}
+                    {/* <img src={home3} alt="icon" />{" "} */}
                   </a>
                   <a href="/home-four">
                     {" "}
-                    <img src={home4} alt="icon" />{" "}
+                    {/* <img src={home4} alt="icon" />{" "} */}
                   </a>
                   <a href="/home-five">
                     {" "}
-                    <img src={home5} alt="icon" />{" "}
+                    {/* <img src={home5} alt="icon" />{" "} */}
                   </a>
                 </div>
               </div>

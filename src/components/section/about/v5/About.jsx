@@ -54,7 +54,30 @@ const About = () => {
               <div className="v5_about_us_left_text">
                 <p>{aboutDescription1}</p>
                 <p>{aboutDescription2}</p>
+
+                <div className="col-span-12 mt-4" style={{display:"flex"}}>
+          <a href="https://www.linkedin.com/company/petz-money" target="_blank" className="socailLogo cursor-pointer">
+            <GrLinkedinOption color="white" size={"24px"}/>
+          </a>
+          {/* <a href="" className="socailLogo px-2">
+            <SlSocialReddit color="white" size={"24px"}/>
+          </a> */}
+          <a  href="https://twitter.com/PetzOfficial" target="_blank" className="socailLogo px-2">
+            <RiTwitterXLine color="white" size={"24px"}/>
+          </a> 
+          <a  href="https://t.me/petz_money" target="_blank" className="socailLogo px-2">
+            <LiaTelegram color="white" size={"24px"}/>
+          </a>
+          <a href="https://github.com/petzofficial" target="_blank" className="socailLogo px-2">
+            <BsGithub color="white" size={"24px"}/>
+          </a>
+          <a href="https://docs.petz.money/" target="_blank" className="socailLogo px-2">
+            <BsFiletypeDoc color="white" size={"24px"}/>
+          </a>
+        </div>
               </div>
+
+              
             </div>
           </div>
           <div className="col-lg-6">
@@ -69,7 +92,7 @@ const About = () => {
                 <h3>
                   {pubicPrice}
                 </h3>
-                <h6>NFT Mint Price</h6>
+                <h6>NFT Mint Price (APT)</h6>
               </div>
               <div className="counter_item">
                 <h3>
@@ -96,26 +119,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-12 mt-4" style={{display:"flex"}}>
-          <a href="https://www.linkedin.com/company/petz-money" target="_blank" className="socailLogo cursor-pointer">
-            <GrLinkedinOption color="white" size={"24px"}/>
-          </a>
-          {/* <a href="" className="socailLogo px-2">
-            <SlSocialReddit color="white" size={"24px"}/>
-          </a> */}
-          <a  href="https://twitter.com/PetzOfficial" target="_blank" className="socailLogo px-2">
-            <RiTwitterXLine color="white" size={"24px"}/>
-          </a> 
-          <a  href="https://t.me/petz_money" target="_blank" className="socailLogo px-2">
-            <LiaTelegram color="white" size={"24px"}/>
-          </a>
-          <a href="https://github.com/petzofficial" target="_blank" className="socailLogo px-2">
-            <BsGithub color="white" size={"24px"}/>
-          </a>
-          <a href="https://docs.petz.money/" target="_blank" className="socailLogo px-2">
-            <BsFiletypeDoc color="white" size={"24px"}/>
-          </a>
-        </div>
+       
       </div>
     </AboutStyleWrapper>
   );

@@ -9,7 +9,7 @@ import { totalMintCount, mint } from '../../../utils/web3mint';
 import { useEffect } from "react";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
-import nftLogo from "../../../assets/images/nft/example-unscreen.gif";
+import nftLogo from "../../../assets/images/nft/example.png";
 
 export const provider = new Provider(Network.TESTNET);
 
