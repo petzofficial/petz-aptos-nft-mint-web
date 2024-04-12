@@ -9,6 +9,7 @@ import { totalMintCount, mint } from '../../../utils/web3mint';
 import { useEffect } from "react";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
+import { toast } from 'react-toastify';
 import nftLogo from "../../../assets/images/nft/example.png";
 
 export const provider = new Provider(Network.TESTNET);
@@ -64,6 +65,7 @@ const MintNowModal = () => {
     }
   }
   const handleMint = async () => {
+    toast.error('Please connect your wallet to mint NFTs.');
     if (!account) return [];
     const payload = {
       type: "entry_function_payload",
@@ -79,6 +81,8 @@ const MintNowModal = () => {
       await provider.waitForTransaction(response.hash);
     } catch (error) {
       console.log("error", error);
+      toast.error('An error occurred while minting NFTs.');
+
     } finally {
       //setTransactionInProgress(false);
     }

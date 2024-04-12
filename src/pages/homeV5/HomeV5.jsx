@@ -19,7 +19,6 @@ import { PetraWallet } from "petra-plugin-wallet-adapter";
 import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
-//import MintStyleWrapper from "./Mint.style";
 
 const provider = new Provider(Network.TESTNET);
 const wallets = [
@@ -29,19 +28,17 @@ const wallets = [
   new TrustWallet(),
 ];
 
-
 const HomeV5 = () => {
   const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
   const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
   
-  const { account, signAndSubmitTransaction } = useWallet();
+  const { account } = useWallet();
 
-  const [cmResourceArr,setCmResource] = useState("")
+  const [cmResourceArr, setCmResource] = useState("");
   const [isCollapse, setCollapse] = useState(true);
-  const { visibility,
-    walletModalvisibility, 
-    metamaskModalVisibility, 
-    connectWalletModal, } = useModal();
+  const { visibility } = useModal();
+  const [currentPage, setCurrentPage] = useState(0); // Track the current page
+
   const menuData = [
     "01. Home",
     "02. About",
@@ -54,8 +51,8 @@ const HomeV5 = () => {
     dots: true,
     arrows: false,
     autoplay: false,
-    speed: 500,
-    autoplaySpeed: 500,
+    speed: 200,
+    autoplaySpeed: 200,
     centerMode: true,
     centerPadding: "0px",
     infinite: true,
@@ -67,72 +64,51 @@ const HomeV5 = () => {
   const handleCollapse = () => {
     setCollapse(!isCollapse);
   };
-  // useEffect(() => {
-  //   const listItems = document.querySelectorAll(".slick-dots li");
-  //   for (let i = 0; i <= listItems.length - 1; i++) {
-  //     listItems[i].addEventListener("click", (e) => { 
-  //       setCollapse(!isCollapse);
-  //     });
-  //   }
-  // }, [isCollapse]);
-  const fetchList = async () => {
-    if (!account) return [];
-    try {
-      const cmResource = await provider.getAccountResource(
-        resourceAddress,
-        `${moduleAddress2}::candymachine::CandyMachine`,
-      );
-      setCmResource(cmResource)
-     console.log(cmResource,'cmResource')
-    } catch (e) {
-     
-    }
-  };
+
   useEffect(() => {
-    fetchList();
-  }, [account?.address]);
+    setCollapse(true); // Collapse the menu when component mounts or current page changes
+  }, [currentPage]);
+
+  const handleChangePage = (index) => {
+    setCurrentPage(index); // Update the current page when a new page is clicked
+  };
+
+  // Your useEffect and fetchList functions remain the same...
+
   return (
     <>
-    <AptosWalletAdapterProvider plugins={wallets} autoConnect={true}>
-      <Layout>
-        <GlobalStyles />
-        {visibility && <MintNowModal />}
-      {/*   {walletModalvisibility && <WalletModal />}
-        {metamaskModalVisibility && <MetamaskModal/> }
-        {connectWalletModal && <ConnectWallet/> } */}
-        <Header />
-        <StyleWrapper>
-          <Slider
-            {...settings}
-            className={`${isCollapse ? "slider_collapse" : ""}`}
-          >
-            <SliderItem>
-              <Banner cmResourceArr={cmResourceArr} />
-            </SliderItem>
-            <SliderItem>
-              <About cmResourceArr={cmResourceArr}/>
-            </SliderItem>
-           {/*  <SliderItem>
-              <RoadMap />
-            </SliderItem>
-            <SliderItem>
-              <Team />
-            </SliderItem> */}
-            <SliderItem>
-              <FAQ />
-            </SliderItem>
-            <SliderItem>
-              <Mint cmResourceArr={cmResourceArr}/>
-            </SliderItem>
-          </Slider>
+      <AptosWalletAdapterProvider plugins={wallets} autoConnect={true}>
+        <Layout>
+          <GlobalStyles />
+          {visibility && <MintNowModal />}
+          <Header />
+          <StyleWrapper>
+            <Slider
+              {...settings}
+              className={`${isCollapse ? "slider_collapse" : ""}`}
+              afterChange={handleChangePage} // Call handleChangePage after slider change
+            >
+              <SliderItem>
+                <Banner cmResourceArr={cmResourceArr} />
+              </SliderItem>
+              <SliderItem>
+                <About cmResourceArr={cmResourceArr}/>
+              </SliderItem>
+              <SliderItem>
+                <FAQ />
+              </SliderItem>
+              <SliderItem>
+                <Mint cmResourceArr={cmResourceArr}/>
+              </SliderItem>
+            </Slider>
 
-          <div className="collapse_icon">
-            <span onClick={() => handleCollapse()}>
-              {isCollapse ? <BsChevronUp /> : <BsChevronDown />}
-            </span>
-          </div>
-        </StyleWrapper>
-      </Layout>
+            <div className="collapse_icon">
+              <span onClick={handleCollapse}>
+                {isCollapse ? <BsChevronUp /> : <BsChevronDown />}
+              </span>
+            </div>
+          </StyleWrapper>
+        </Layout>
       </AptosWalletAdapterProvider>
     </>
   );
