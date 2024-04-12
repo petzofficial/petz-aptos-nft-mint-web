@@ -15,7 +15,6 @@ const StyleWrapper = styled.div`
     display: flex !important;
     justify-content: space-between;
     align-items: center;
-
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(4px);
 

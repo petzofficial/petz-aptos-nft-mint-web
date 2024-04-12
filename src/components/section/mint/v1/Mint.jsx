@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useModal } from "../../../../utils/ModalContext";
 import { Slider, SliderItem } from "../../../../common/slider/Slider";
 import Button from "../../../../common/button";
+import { toast } from 'react-toastify';
 
 import thumb1 from "../../../../assets/images/nft/emoji-img4.png";
 import thumb2 from "../../../../assets/images/nft/emoji-img5.png";
@@ -41,6 +42,11 @@ const Mint = () => {
 
   const handleChenge = () => {};
   const handleMint = async () => {
+    if (!account) {
+      // Show toast message
+      toast.error('Please connect your wallet to mint NFTs.');
+      return;
+    }
     if (!account) return [];
     const payload = {
       type: "entry_function_payload",
@@ -55,6 +61,8 @@ const Mint = () => {
       await provider.waitForTransaction(response.hash);
     } catch (error) {
       console.log("error", error);
+          // Show toast message for error
+      toast.error('An error occurred while minting NFTs.');
     } finally {
       //setTransactionInProgress(false);
     }
