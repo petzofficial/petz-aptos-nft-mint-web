@@ -114,11 +114,11 @@ const Mint = () => {
                   {" "}
                   Mint now
                 </Button>
-                <p>
+               {/*  <p>
                   By clicking “MINT”, You agree to our{" "}
                   <a href="# ">Terms of Service</a> and our{" "}
                   <a href="# ">Privacy Policy.</a>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useModal } from "../../../utils/ModalContext";
 import { FiX } from "react-icons/fi";
 import Button from "../../button";
@@ -6,9 +6,9 @@ import MintModalStyleWrapper from "./MintNow.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
 import { totalMintCount, mint } from '../../../utils/web3mint';
-import { useEffect } from "react";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
+import { toast } from 'react-toastify';
 import nftLogo from "../../../assets/images/nft/example.png";
 
 export const provider = new Provider(Network.TESTNET);
@@ -22,32 +22,32 @@ const MintNowModal = () => {
   const [message, setMessage] = useState('');
   const [remaining, setRemaining] = useState(0);
   const { mintModalHandle } = useModal();
-  const [cmResourceArr,setCmResource] = useState("")
+  const [cmResourceArr,setCmResource] = useState(null);
 
   let totalItems = 9999;
   let price = 0.03;
 
   const increaseCount = () => {
     if(count >= 10){
-      setMessage('Maximum minting ammount exceeding!');
+      setMessage('Maximum minting amount exceeded!');
     }else{
       setCount(count + 1);
     }
   }
 
-  const dcreaseCount = () => {
+  const decreaseCount = () => {
     if(count < 1){
-      setMessage('Minimum minting ammount 1.');
+      setMessage('Minimum minting amount is 1.');
     }else{
       setCount(count - 1);
     }
   }
 
-  const onChnageCount = (val) => {
-    if(count >= 10){
-      setMessage('Maximum minting ammount exceeding!');
-    }else if(count < 1){
-      setMessage('Minimum minting ammount 1.');
+  const onChangeCount = (val) => {
+    if(val >= 10){
+      setMessage('Maximum minting amount exceeded!');
+    }else if(val < 1){
+      setMessage('Minimum minting amount is 1.');
     }else{
       setCount(val);
     }
@@ -56,15 +56,19 @@ const MintNowModal = () => {
 
   const mintNow = async () => {
     if(count >= 10){
-      setMessage('Maximum minting ammount exceeding!');
+      setMessage('Maximum minting amount exceeded!');
     }else if(count < 1){
-      setMessage('Minimum minting ammount 1.');
+      setMessage('Minimum minting amount is 1.');
     }else{
 
     }
   }
   const handleMint = async () => {
-    if (!account) return [];
+    if (!account) {
+      toast.error('Please connect your wallet to mint NFTs.');
+      return;
+    }
+  
     const payload = {
       type: "entry_function_payload",
       function: `${moduleAddress2}::candymachine::mint_script_many`,
@@ -79,11 +83,12 @@ const MintNowModal = () => {
       await provider.waitForTransaction(response.hash);
     } catch (error) {
       console.log("error", error);
+      toast.error('An error occurred while minting NFTs.');
     } finally {
       //setTransactionInProgress(false);
     }
   }
-
+  
   useEffect(() => {
     const calculateRemainingItems = async () => {
       let totaltMintedItems = await totalMintCount();
@@ -100,7 +105,7 @@ const MintNowModal = () => {
         `${moduleAddress2}::candymachine::CandyMachine`,
       );
       setCmResource(cmResource)
-     console.log(cmResource,'cmResource')
+      console.log(cmResource,'cmResource')
     } catch (e) {
      
     }
@@ -108,7 +113,7 @@ const MintNowModal = () => {
   useEffect(() => {
     fetchList();
   }, [account?.address]);
-  const pubicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
+  const publicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">
@@ -129,19 +134,19 @@ const MintNowModal = () => {
                   <li>
                     <h5>Remaining</h5>
                     <h5>
-                      {cmResourceArr?.data?.minted}/<span>{cmResourceArr?.data?.total_supply}</span>
+                      {account ? (cmResourceArr?.data?.minted ? `${cmResourceArr?.data?.minted}/${cmResourceArr?.data?.total_supply}` : "0/0") : "0/0"}
                     </h5>
                   </li>
                   <li>
                     <h5>Price</h5>
-                    <h5>{pubicPrice} APT</h5>
+                    <h5>{publicPrice} APT</h5>
                   </li>
                   <li>
                     <h5>Quantity</h5>
                     <div className="mint_quantity_sect">
                       <button
                         onClick={() =>
-                          count > 1 ? dcreaseCount() : count
+                          count > 1 ? decreaseCount() : count
                         }
                       >
                         -
@@ -150,12 +155,12 @@ const MintNowModal = () => {
                         type="text"
                         id="quantity"
                         value={count}
-                        onChange={(e) => onChnageCount(e.target.value)}
+                        onChange={(e) => onChangeCount(e.target.value)}
                       />
                       <button onClick={() => increaseCount() }>+</button>
                     </div>
                     <h5>
-                      <span>{ count * pubicPrice }</span> APT
+                      <span>{ count * publicPrice }</span> APT
                     </h5>
                   </li>
                 </ul>

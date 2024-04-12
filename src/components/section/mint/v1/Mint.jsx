@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useModal } from "../../../../utils/ModalContext";
 import { Slider, SliderItem } from "../../../../common/slider/Slider";
 import Button from "../../../../common/button";
+import { toast } from 'react-toastify';
 
 import thumb1 from "../../../../assets/images/nft/emoji-img4.png";
 import thumb2 from "../../../../assets/images/nft/emoji-img5.png";
@@ -40,8 +41,14 @@ const Mint = () => {
   };
 
   const handleChenge = () => {};
+
   const handleMint = async () => {
-    if (!account) return [];
+    if (!account) {
+      // Show toast message
+      toast.error('Please connect your wallet to mint NFTs.');
+      return;
+    }
+
     const payload = {
       type: "entry_function_payload",
       function: `${moduleAddress2}::candymachine::mint_script_many`,
@@ -55,46 +62,19 @@ const Mint = () => {
       await provider.waitForTransaction(response.hash);
     } catch (error) {
       console.log("error", error);
-    } finally {
-      //setTransactionInProgress(false);
+      // Show toast message for error
+      toast.error('An error occurred while minting NFTs.');
     }
-    
   }
   
   const fetchList = async () => {
     if (!account) return [];
     try {
-      // const transactionResource = await provider.getAccountTransactions(
-      //   account?.address
-      // );
-
-      // const coinResource = await provider.getAccountResource(
-      //   account?.address,
-      //   `${moduleAddress}::coin::CoinStore<${moduleAddress}::aptos_coin::AptosCoin>`,
-      // );
-
-      // const cmResource2 = await provider.getAccountResource(
-      //   account?.address,
-      //   `${moduleAddress2}::candymachine::MintData`,
-      // );
-
-      // const nftResource = await provider.getOwnedTokens(
-      //   account?.address
-      // );
-
-      // const faResource = await provider.getAccountCoinsData(
-      //   account?.address
-      // );
-
-      // const resource = await provider.getAccountResources(
-      //   account?.address
-      // );
       const cmResource = await provider.getAccountResource(
         resourceAddress,
         `${moduleAddress2}::candymachine::CandyMachine`,
       );
       setCmResource(cmResource)
-     console.log(cmResource)
     } catch (e) {
      
     }
@@ -102,8 +82,9 @@ const Mint = () => {
   useEffect(() => {
     fetchList();
   }, [account?.address]);
-  //const pubicPrice = cmResourceArr?.data?.public_sale_mint_price / 100000000
+
   const pubicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
+
   return (
     <MintStyleWrapper>
       <div className="container">
@@ -165,11 +146,6 @@ const Mint = () => {
                 {" "}
                 Mint now
               </Button>
-              <p style={{color:"white"}}>
-                By clicking “MINT”, You agree to our{" "}
-                <a href="# ">Terms of Service</a> and our{" "}
-                <a href="# ">Privacy Policy.</a>
-              </p>
             </div>
           </div>
         </div>

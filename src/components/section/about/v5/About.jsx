@@ -83,8 +83,11 @@ const About = () => {
           <div className="col-lg-6">
             <div className="about_right_item">
               <div className="counter_item">
-                <h3>
+                {/* <h3>
                   {cmResourceArr?.data?.total_supply}
+                </h3> */}
+                <h3>
+                  3125
                 </h3>
                 <h6>Total Items</h6>
               </div>
@@ -112,9 +115,9 @@ const About = () => {
                     decimal="."
                     decimals={25.5 % 1 !== 0 ? "2" : "0"}
                     suffix={"K"}
-                  /> */}0
+                  /> */}10000+
                 </h3>
-                <h6>Volume Traded (APT)</h6>
+                <h6>Community Members</h6>
               </div>
             </div>
           </div>
