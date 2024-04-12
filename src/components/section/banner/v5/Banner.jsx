@@ -1,4 +1,4 @@
-import { useEffect, useState,useContext } from "react";
+import { useEffect, useState } from "react";
 import { useModal } from "../../../../utils/ModalContext";
 import { Slider, SliderItem } from "../../../../common/slider/Slider";
 import CoinInfoSlider from "../../coinInfoSlider";
@@ -18,14 +18,14 @@ import nftLogo from "../../../../assets/images/nft/example.png";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
 export const provider = new Provider(Network.TESTNET);
-//G:\test2\petz-aptos-nft-mint-main\src/pages/homeV5/CmContext
+
 const Banner = () => {
  
   const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
   const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
-  const { account, signAndSubmitTransaction } = useWallet();
+  const { account } = useWallet();
   const { mintModalHandle } = useModal();
-  const [cmResourceArr,setCmResource] = useState("")
+  const [cmResourceArr, setCmResource] = useState("");
   const slideImages = [thumb1, thumb2, thumb3];
 
   const settings = {
@@ -42,7 +42,23 @@ const Banner = () => {
     slidesToScroll: 1,
   };
 
+  const fetchList = async () => {
+    if (!account) return [];
+    try {
+      const cmResource = await provider.getAccountResource(
+        resourceAddress,
+        `${moduleAddress2}::candymachine::CandyMachine`,
+      );
+      setCmResource(cmResource);
+    } catch (e) {
+      console.error("Error fetching resources:", e);
+    }
+  };
 
+  useEffect(() => {
+    fetchList();
+  }, [account?.address]);
+  
   const unixTimestamp = cmResourceArr?.data?.public_sale_mint_time; // Replace this with your Unix timestamp
   const date = new Date(unixTimestamp * 1000); // Convert Unix timestamp to milliseconds
 
@@ -57,22 +73,6 @@ const Banner = () => {
   const pubicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
   const prePrice = cmResourceArr?.data?.presale_mint_price * (Math.pow(10, -8))
 
-  const fetchList = async () => {
-    if (!account) return [];
-    try {
-      const cmResource = await provider.getAccountResource(
-        resourceAddress,
-        `${moduleAddress2}::candymachine::CandyMachine`,
-      );
-      setCmResource(cmResource)
-    } catch (e) {
-     
-    }
-  };
-  useEffect(() => {
-    fetchList();
-  }, [account?.address]);
-  
   return (
     <BannerV1Wrapper id="home">
       <div className="container">
@@ -84,7 +84,6 @@ const Banner = () => {
               </h2>
               <h3>
                 <span className="count">
-                  {/* <Counter end={5555} duration={5555} /> */}
                   {cmResourceArr?.data?.minted ? cmResourceArr?.data?.minted : "0"}
                 </span>{" "}
                 / {cmResourceArr?.data?.total_supply ? cmResourceArr?.data?.total_supply : "0"} Minted
@@ -94,9 +93,6 @@ const Banner = () => {
                   {" "}
                   Mint now
                 </Button>
-               {/*  <Button sm variant="outline">
-                  Wishlist now
-                </Button> */}
               </div>
               <div className="coin-info">
                 <span>Max 2 NFTs per wallet . Price {pubicPrice} APT + gas</span>
@@ -104,7 +100,7 @@ const Banner = () => {
                   MINT IS LIVE{" "}
                   <span className="highlighted">UNTIL {`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>
                 </span>
-                <span>Presale : {cmResourceArr?.data?.presale_mint_price ? prePrice : ""} APT</span>
+                <span>Presale : {account ? prePrice : "NaN"} APT</span>
               </div>
             </div>
           </div>

@@ -1,12 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useModal } from "../../../utils/ModalContext";
 import { FiX } from "react-icons/fi";
 import Button from "../../button";
 import MintModalStyleWrapper from "./MintNow.style";
 import mintImg from "../../../assets/images/icon/mint-img.png";
 import hoverShape from "../../../assets/images/icon/hov_shape_L.svg";
-import { totalMintCount, mint } from '../../../utils/web3mint';
-import { useEffect } from "react";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
 import { toast } from 'react-toastify';
@@ -14,105 +12,65 @@ import nftLogo from "../../../assets/images/nft/example.png";
 
 export const provider = new Provider(Network.TESTNET);
 
-const MintNowModal = () => {
-
+const MintNowModal = ({ cmResourceArr }) => {
   const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
   const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
   const { account, signAndSubmitTransaction } = useWallet();
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
-  const [remaining, setRemaining] = useState(0);
   const { mintModalHandle } = useModal();
-  const [cmResourceArr,setCmResource] = useState("")
 
   let totalItems = 9999;
-  let price = 0.03;
 
   const increaseCount = () => {
     if(count >= 10){
-      setMessage('Maximum minting ammount exceeding!');
-    }else{
+      setMessage('Maximum minting amount exceeded!');
+    } else {
       setCount(count + 1);
     }
   }
 
-  const dcreaseCount = () => {
+  const decreaseCount = () => {
     if(count < 1){
-      setMessage('Minimum minting ammount 1.');
-    }else{
+      setMessage('Minimum minting amount is 1.');
+    } else {
       setCount(count - 1);
     }
   }
 
-  const onChnageCount = (val) => {
-    if(count >= 10){
-      setMessage('Maximum minting ammount exceeding!');
-    }else if(count < 1){
-      setMessage('Minimum minting ammount 1.');
-    }else{
+  const onChangeCount = (val) => {
+    if(val >= 1 && val <= 10){
       setCount(val);
+    } else {
+      setMessage('Minting amount should be between 1 and 10.');
     }
   }
-
 
   const mintNow = async () => {
-    if(count >= 10){
-      setMessage('Maximum minting ammount exceeding!');
-    }else if(count < 1){
-      setMessage('Minimum minting ammount 1.');
-    }else{
-
+    if (!account) {
+      toast.error('Please connect your wallet to mint NFTs.');
+      return;
     }
-  }
-  const handleMint = async () => {
-    toast.error('Please connect your wallet to mint NFTs.');
-    if (!account) return [];
+    if (count < 1 || count > 10) {
+      setMessage('Minting amount should be between 1 and 10.');
+      return;
+    }
+
     const payload = {
       type: "entry_function_payload",
       function: `${moduleAddress2}::candymachine::mint_script_many`,
       type_arguments: [],
-      arguments: [resourceAddress,count],
+      arguments: [resourceAddress, count],
     };
     try {
-      // sign and submit transaction to chain
       const response = await signAndSubmitTransaction(payload);
-      console.log(response,'response')
-      // wait for transaction
       await provider.waitForTransaction(response.hash);
     } catch (error) {
-      console.log("error", error);
+      console.error("Error minting NFTs:", error);
       toast.error('An error occurred while minting NFTs.');
-
-    } finally {
-      //setTransactionInProgress(false);
     }
   }
 
-  useEffect(() => {
-    const calculateRemainingItems = async () => {
-      let totaltMintedItems = await totalMintCount();
-      setRemaining(totalItems - totaltMintedItems);
-    }
-
-    calculateRemainingItems();
-  },[totalItems]);
-  const fetchList = async () => {
-    if (!account) return [];
-    try {
-      const cmResource = await provider.getAccountResource(
-        resourceAddress,
-        `${moduleAddress2}::candymachine::CandyMachine`,
-      );
-      setCmResource(cmResource)
-     console.log(cmResource,'cmResource')
-    } catch (e) {
-     
-    }
-  };
-  useEffect(() => {
-    fetchList();
-  }, [account?.address]);
-  const pubicPrice = cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))
   return (
     <>
       <MintModalStyleWrapper className="modal_overlay">
@@ -120,7 +78,7 @@ const MintNowModal = () => {
           <div className="mint_modal_content">
             <div className="modal_header">
               <h2>Collect YOUR NFT before end</h2>
-              <button onClick={() => mintModalHandle()}>
+              <button onClick={mintModalHandle}>
                 <FiX />
               </button>
             </div>
@@ -133,45 +91,40 @@ const MintNowModal = () => {
                   <li>
                     <h5>Remaining</h5>
                     <h5>
-                      {cmResourceArr?.data?.minted}/<span>{cmResourceArr?.data?.total_supply}</span>
+                      {cmResourceArr?.data?.minted ? cmResourceArr?.data?.minted : "0"}/<span>{cmResourceArr?.data?.total_supply ? cmResourceArr?.data?.total_supply : "0"}</span>
                     </h5>
                   </li>
                   <li>
                     <h5>Price</h5>
-                    <h5>{pubicPrice} APT</h5>
+                    <h5>{cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8))} APT</h5>
                   </li>
                   <li>
                     <h5>Quantity</h5>
                     <div className="mint_quantity_sect">
-                      <button
-                        onClick={() =>
-                          count > 1 ? dcreaseCount() : count
-                        }
-                      >
-                        -
-                      </button>
+                      <button onClick={decreaseCount}>-</button>
                       <input
-                        type="text"
+                        type="number"
                         id="quantity"
+                        min="1"
+                        max="10"
                         value={count}
-                        onChange={(e) => onChnageCount(e.target.value)}
+                        onChange={(e) => onChangeCount(parseInt(e.target.value))}
                       />
-                      <button onClick={() => increaseCount() }>+</button>
+                      <button onClick={increaseCount}>+</button>
                     </div>
                     <h5>
-                      <span>{ count * pubicPrice }</span> APT
+                      <span>{count * (cmResourceArr?.data?.public_sale_mint_price * (Math.pow(10, -8)))}</span> APT
                     </h5>
                   </li>
                 </ul>
               </div>
               { message && <p>{message}</p>}
               <div className="modal_mint_btn">
-                <Button lg variant="mint" onClick={() => handleMint() }>
+                <Button lg variant="mint" onClick={mintNow}>
                   Mint Now
                 </Button>
               </div>
             </div>
-
             <div className="modal_bottom_shape_wrap">
               <span className="modal_bottom_shape shape_left">
                 <img src={hoverShape} alt="bithu nft hover shape" />
