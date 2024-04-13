@@ -95,12 +95,13 @@ const Banner = () => {
                 </Button>
               </div>
               <div className="coin-info">
-                <span>Max 2 NFTs per wallet . Price {pubicPrice} APT + gas</span>
+                <span>Max 10 NFTs per wallet . Public Sale Price {pubicPrice} APT</span>
                 <span>
                   MINT IS LIVE{" "}
-                  <span className="highlighted">UNTIL {`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>
+                  ON <span className="highlighted">2024-05-01 09:00:00 (EST)</span>
+                 {/*  <span className="highlighted">UNTIL {`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span> */}
                 </span>
-                <span>Presale : {account ? prePrice : "NaN"} APT</span>
+                {/* <span>Presale : {account ? prePrice : "NaN"} APT</span> */}
               </div>
             </div>
           </div>
