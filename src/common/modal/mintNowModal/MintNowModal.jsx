@@ -81,6 +81,12 @@ const MintNowModal = () => {
       console.log(response,'response')
       // wait for transaction
       await provider.waitForTransaction(response.hash);
+
+      if(response.success === true){
+        toast.success('Successfully minted NFTs.');
+        mintModalHandle()
+      }
+
     } catch (error) {
       console.log("error", error);
       toast.error('An error occurred while minting NFTs.');

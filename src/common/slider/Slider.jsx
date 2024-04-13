@@ -16,7 +16,7 @@ const Slider = memo(({children, className, ...props}) => {
 })
 
 const SliderItem = memo(({children, className}) => {
-    console.log(children,'children2')
+   // console.log(children,'children2')
     const AllClasses = ['slick__slider__item']
     if(className){
         AllClasses.push(className)
