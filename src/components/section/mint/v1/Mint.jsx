@@ -56,10 +56,16 @@ const Mint = () => {
       arguments: [resourceAddress,count],
     };
     try {
-      // sign and submit transaction to chain
-      const response = await signAndSubmitTransaction(payload);
-      // wait for transaction
-      await provider.waitForTransaction(response.hash);
+       // sign and submit transaction to chain
+       const response = await signAndSubmitTransaction(payload);
+       console.log(response,'response')
+       // wait for transaction
+       await provider.waitForTransaction(response.hash);
+ 
+       if(response.success === true){
+         toast.success('Successfully minted NFTs.');
+         //mintModalHandle()
+       }
     } catch (error) {
       console.log("error", error);
       // Show toast message for error
