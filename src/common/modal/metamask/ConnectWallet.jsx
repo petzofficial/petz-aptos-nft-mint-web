@@ -9,9 +9,7 @@ const ConnectWallet = (props) => {
   return (
     <>
       <MetamaskModalStyle className="modal_overlay">
-        <div
-          className="mint_modal_box"
-        >
+        <div className="mint_modal_box">
           <div className="mint_modal_content">
             <div className="modal_header">
               <h2>CONNECT WALLET</h2>
@@ -25,7 +23,7 @@ const ConnectWallet = (props) => {
                   <img src={metamaskIcon} alt="Meta-mask" />
                   Connect your wallet!
                 </a>
-                </div>
+              </div>
             </div>
 
             <div className="modal_bottom_shape_wrap">

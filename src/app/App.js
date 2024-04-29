@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
-//import HomeV1 from "../pages/homeV1";
-//import HomeV2 from "../pages/homeV2";
-//import HomeV3 from "../pages/homeV3";
-//import HomeV4 from "../pages/homeV4";
+import HomeV1 from "../pages/homeV1";
+import HomeV2 from "../pages/homeV2";
+import HomeV3 from "../pages/homeV3";
+import HomeV4 from "../pages/homeV4";
 import HomeV5 from "../pages/homeV5";
 import Blogs from "../pages/blogs";
 import BlogDetails from "../pages/blogDetails";
@@ -12,7 +12,7 @@ import RoadmapPage from "../pages/roadmap";
 import Collections from "../pages/collections";
 import ContactPage from "../pages/contact";
 import MintPageOne from "../pages/mint-1";
-//import MintPageTwo from "../pages/mint-2";
+import MintPageTwo from "../pages/mint-2";
 import FAQPage from "../pages/faq";
 
 function App() {

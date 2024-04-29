@@ -14,6 +14,7 @@ const ContextProvider = ({ children }) => {
   const [metamaskModalVisibility, setMetamaskModalVisibility] = useState(false);
   const [connectWalletModal, setConnectWalletModal] = useState(false);
   const [account, setAccount] = useState("");
+  const [cmResourceArr, setCmResource] = useState("");
 
   const mintModalHandle = () => {
     setVisibility(!visibility);
@@ -31,30 +32,38 @@ const ContextProvider = ({ children }) => {
   };
 
   const connectWalletModalHanlde = () => {
-    if (!isWalletConnected()) {
-      setConnectWalletModal(!connectWalletModal);
-    }
+    try {
+      if (!isWalletConnected()) {
+        setConnectWalletModal(!connectWalletModal);
+      }
+    } catch (error) {}
   };
 
   const connectWalletHandle = async () => {
-    const accounts = await connectWallet();
-    setAccount(accounts);
-    if (!isWalletConnected()) {
-      connectWalletLocaly();
-    }
-    setModalvisibility(!walletModalvisibility);
+    try {
+      const accounts = await connectWallet();
+      setAccount(accounts);
+      if (!isWalletConnected()) {
+        connectWalletLocaly();
+      }
+      setModalvisibility(!walletModalvisibility);
+    } catch (error) {}
   };
 
   const isWalletAlreadyConnected = async () => {
-    if (isWalletConnected()) {
-      const accounts = await connectWallet();
-      setAccount(accounts);
-    }
+    try {
+      if (isWalletConnected()) {
+        const accounts = await connectWallet();
+        setAccount(accounts);
+      }
+    } catch (error) {}
   };
 
   const disconnectWalletFromApp = () => {
-    disconnectWallet();
-    setAccount("");
+    try {
+      disconnectWallet();
+      setAccount("");
+    } catch (error) {}
   };
 
   return (
@@ -73,7 +82,9 @@ const ContextProvider = ({ children }) => {
         isWalletAlreadyConnected,
         disconnectWalletFromApp,
         connectWalletModalHanlde,
-        connectWalletModal
+        connectWalletModal,
+        cmResourceArr,
+        setCmResource,
       }}
     >
       {children}

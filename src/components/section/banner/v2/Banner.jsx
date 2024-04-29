@@ -7,7 +7,7 @@ import Button from "../../../../common/button";
 import data from "../../../../assets/data/particle/bannerV2Particles";
 import BannerStyleWrapper from "./Banner.style";
 import { useEffect, useState } from "react";
-import { totalMintCount } from '../../../../utils/web3mint';
+import { totalMintCount } from "../../../../utils/web3mint";
 
 const Banner = () => {
   const { mintModalHandle, connectWalletModalHanlde, account } = useModal();
@@ -21,20 +21,20 @@ const Banner = () => {
     dayTitle: "",
     hourTitle: "",
     minuteTitle: "",
-    secondTitle: "", 
+    secondTitle: "",
     id: "countdownwrap",
   };
 
   const [remaining, setRemaining] = useState(0);
 
-  useEffect(() =>{
+  useEffect(() => {
     const calculateRemainingItems = async () => {
       let totaltMintedItems = await totalMintCount();
       setRemaining(totaltMintedItems);
-    }
+    };
 
     calculateRemainingItems();
-  },[])
+  }, []);
 
   return (
     <BannerStyleWrapper className="bithu_v2_baner_sect" id="home">
@@ -58,17 +58,21 @@ const Banner = () => {
             </div>
           </div>
           <div className="bithu_v2_baner_buttons text-center">
-          {
-            account ? 
-            <Button lg variant="mint" onClick={() => mintModalHandle()}>
-              {" "}
-              Mint now
-            </Button> :
-            <Button lg variant="mint" onClick={() => connectWalletModalHanlde()}>
-              {" "}
-              Mint now
-            </Button>
-          }
+            {account ? (
+              <Button lg variant="mint" onClick={() => mintModalHandle()}>
+                {" "}
+                Mint now
+              </Button>
+            ) : (
+              <Button
+                lg
+                variant="mint"
+                onClick={() => connectWalletModalHanlde()}
+              >
+                {" "}
+                Mint now
+              </Button>
+            )}
           </div>
 
           <Particle className="v2_baner_stars" particles={data} />
