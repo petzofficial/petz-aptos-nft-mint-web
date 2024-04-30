@@ -15,8 +15,8 @@ import MintStyleWrapper from "./Mint.style";
 const provider = new Provider(Network.TESTNET);
 
 const Mint = () => {
-  const moduleAddress2 = "0x82afe3de6e9acaf4f2de72ae50c3851a65bb86576198ef969937d59190873dfd";
-  const resourceAddress = "0x8484ec04e905df1987e0b378fbe8de1a6eaf8bd620f68b5dee3d0227974b022a";
+  const moduleAddress2 = "0x3562227119a7a6190402c7cc0b987d2ff5432445a8bfa90c3a51be9ff29dcbe3";
+  const resourceAddress = "0xa943c5cdcea7e411768f10592f76e773b3f45803d7c061951e2e6d77bb305dc0";
   
   const { account, signAndSubmitTransaction } = useWallet();
 
@@ -51,7 +51,7 @@ const Mint = () => {
 
     const payload = {
       type: "entry_function_payload",
-      function: `${moduleAddress2}::candymachine::mint_script_many`,
+      function: `${moduleAddress2}::petz_candymachine::mint_script_many`,
       type_arguments: [],
       arguments: [resourceAddress,count],
     };
@@ -70,6 +70,8 @@ const Mint = () => {
       console.log("error", error);
       // Show toast message for error
       toast.error('An error occurred while minting NFTs.');
+    } finally {
+      //setTransactionInProgress(false);
     }
   }
   
@@ -78,7 +80,7 @@ const Mint = () => {
     try {
       const cmResource = await provider.getAccountResource(
         resourceAddress,
-        `${moduleAddress2}::candymachine::CandyMachine`,
+        `${moduleAddress2}::petz_candymachine::CandyMachine`,
       );
       setCmResource(cmResource)
     } catch (e) {
