@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useModal } from "../../../../utils/ModalContext";
+import { useContext, useEffect, useState } from "react";
+import { ModalContext, useModal } from "../../../../utils/ModalContext";
 import { Slider, SliderItem } from "../../../../common/slider/Slider";
 import CoinInfoSlider from "../../coinInfoSlider";
 import Counter from "../../../../common/counter";
@@ -25,7 +25,7 @@ const Banner = () => {
   const resourceAddress = "0xa943c5cdcea7e411768f10592f76e773b3f45803d7c061951e2e6d77bb305dc0";
   const { account } = useWallet();
   const { mintModalHandle } = useModal();
-  const [cmResourceArr, setCmResource] = useState("");
+  const {cmResourceArr, setCmResource} = useContext(ModalContext);
   const slideImages = [thumb1, thumb2, thumb3];
 
   const settings = {
