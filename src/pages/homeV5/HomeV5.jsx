@@ -20,7 +20,7 @@ import "@aptos-labs/wallet-adapter-ant-design/dist/index.css";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
 
-const provider = new Provider(Network.TESTNET);
+
 const wallets = [
   new MartianWallet(),
   new PetraWallet(),
@@ -29,9 +29,7 @@ const wallets = [
 ];
 
 const HomeV5 = () => {
-  const moduleAddress2 = "0x3562227119a7a6190402c7cc0b987d2ff5432445a8bfa90c3a51be9ff29dcbe3";
-  const resourceAddress = "0xa943c5cdcea7e411768f10592f76e773b3f45803d7c061951e2e6d77bb305dc0";
-  
+
   const { account } = useWallet();
 
   const [cmResourceArr, setCmResource] = useState("");

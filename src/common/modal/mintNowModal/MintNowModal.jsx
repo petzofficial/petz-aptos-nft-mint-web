@@ -11,11 +11,11 @@ import { Network, Provider } from "aptos";
 import { toast } from "react-toastify";
 import nftLogo from "../../../assets/images/nft/example.png";
 import { useContext } from "react";
-export const provider = new Provider(Network.TESTNET);
+export const provider = new Provider(Network.MAINNET);
 
 const MintNowModal = () => {
-  const moduleAddress2 = "0x3562227119a7a6190402c7cc0b987d2ff5432445a8bfa90c3a51be9ff29dcbe3";
-  const resourceAddress = "0xa943c5cdcea7e411768f10592f76e773b3f45803d7c061951e2e6d77bb305dc0";
+  const moduleAddress2 = "0x8c61678fd2496dee452f059fda66111658254f99dbb8a90d31c880ed90a4d4c4";
+  const resourceAddress = "0xb0d58c32e4305b6f702aef868ea4628304c5ebd84d4634b3af700ea87ecbfa2f";
   const { account, signAndSubmitTransaction } = useWallet();
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState("");
