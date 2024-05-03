@@ -95,7 +95,12 @@ const Banner = () => {
                 </Button>
               </div>
               <div className="coin-info">
-                <span>Max 10 NFTs per wallet . Public Sale Price {pubicPrice} APT</span>
+                <span>Max 10 NFTs per wallet. Presale Price 50% DISC, Public Sale Price {pubicPrice} APT.</span>
+                <span>
+                  PRESALE MINT IS LIVE{" "}
+                  ON <span className="highlighted">2024-05-10 12:00:00 (UTC)</span>
+                 {/*  <span className="highlighted">UNTIL {`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span> */}
+                </span>
                 <span>
                   PUBLIC SALE MINT IS LIVE{" "}
                   ON <span className="highlighted">2024-05-11 12:00:00 (UTC)</span>
