@@ -17,12 +17,12 @@ import particle3 from "../../../../assets/images/icon/v5-coin-icon.svg";
 import nftLogo from "../../../../assets/images/nft/example.png";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Network, Provider } from "aptos";
-export const provider = new Provider(Network.MAINNET);
+export const provider = new Provider(Network.TESTNET);
 
 const Banner = () => {
  
-  const moduleAddress2 = "0x8c61678fd2496dee452f059fda66111658254f99dbb8a90d31c880ed90a4d4c4";
-  const resourceAddress = "0xb0d58c32e4305b6f702aef868ea4628304c5ebd84d4634b3af700ea87ecbfa2f";
+  const moduleAddress2 = "0x704f1829d1a79e4ad14195dc82fc70be972bbeca80240ca37573899d1cb0ab2b";
+  const resourceAddress = "0xf7cbce61f5907c3244e3be25765dd41b2ef220e9121d16fe32ad2d7f7af56065";
   const { account } = useWallet();
   const { mintModalHandle } = useModal();
   const {cmResourceArr, setCmResource} = useContext(ModalContext);
